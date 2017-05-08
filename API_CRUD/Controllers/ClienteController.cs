@@ -29,7 +29,7 @@ namespace API_CRUD.Controller
         
 
         [HttpGet]
-        [Route("consulta/{id}", Name = "GetClientes")]
+        [Route("consulta")]
         public IEnumerable<Cliente> GetCliente()
         {
             return clienteRepo.GetTodosClientes();
