@@ -37,15 +37,15 @@ namespace ClienteMongoDB.Models
 
         }
 
-        public void RemoverCliente(ObjectId id)
+        public void RemoverCliente(Cliente item)
         {
-           clientesDB.DeleteOne(c => c._id == id);
+           clientesDB.DeleteOne(c => c.nome == item.nome);
 
         }
 
         public void AtualizarCliente(Cliente item)
         {
-            var itemAtualizar = clientesDB.Find(c => c.nome == item.nome).ToList().First();
+            Cliente itemAtualizar = clientesDB.Find(c => c.nome == item.nome).ToList().First();
             if (itemAtualizar != null)
             {
                 itemAtualizar.nome = item.nome;

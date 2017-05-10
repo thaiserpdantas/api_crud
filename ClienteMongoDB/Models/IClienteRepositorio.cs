@@ -11,7 +11,7 @@ namespace ClienteMongoDB.Models
     {
         IEnumerable<Cliente> GetTodosClientes();
         void AdicionarCliente(Cliente item);
-        void RemoverCliente(ObjectId id);
+        void RemoverCliente(Cliente item);
         void AtualizarCliente(Cliente item);
         Cliente BuscarCliente(string id);
 
