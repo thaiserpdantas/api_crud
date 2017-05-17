@@ -51,7 +51,7 @@ namespace ClienteMongoDB.Models
                 itemAtualizar.nome = item.nome;
                 itemAtualizar.telefone = item.telefone;
             }
-        }
+        } 
 
         public Cliente BuscarCliente(string id)
         {
