@@ -33,25 +33,28 @@ namespace ClienteMongoDB.Models
 
         public void AdicionarCliente(Cliente item)
         {
-            clientesDB.InsertOne(item);           
+            clientesDB.InsertOne(item);
 
         }
 
         public void RemoverCliente(Cliente item)
         {
-           clientesDB.DeleteOne(c => c.nome == item.nome);
+            clientesDB.DeleteOne(c => c.nome == item.nome);
 
         }
 
-        public void AtualizarCliente(Cliente item)
+        public async void AtualizarCliente(Cliente item)
         {
-            Cliente itemAtualizar = clientesDB.Find(c => c.nome == item.nome).ToList().First();
-            if (itemAtualizar != null)
+
+            if (item != null)
             {
-                itemAtualizar.nome = item.nome;
-                itemAtualizar.telefone = item.telefone;
+                var filter = Builders<Cliente>.Filter.Eq(c => c.nome, item.nome);
+                var update = Builders<Cliente>.Update.Set(c => c.telefone, item.telefone);
+                var result = await clientesDB.UpdateOneAsync(filter, update);
             }
-        } 
+
+
+        }
 
         public Cliente BuscarCliente(string id)
         {
